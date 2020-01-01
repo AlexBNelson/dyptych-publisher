@@ -1,0 +1,28 @@
+.btn-italics{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    height: 8vh;
+    margin: 2vh 2vh 2vh 2vh;
+    float: top;
+}
+
+.btn-iLink{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    height: 8vh;
+    margin: 2vh 2vh 2vh 2vh;
+    float: top;
+}
+
+button:active{
+    background-color: #0074a9;
+    outline: none;
+  }
