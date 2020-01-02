@@ -21,6 +21,8 @@
 }
 
 .App-title{
+  top:3vh;
+  margin-top: 6vh;
   margin-bottom: 2vh;
   left: 2vw;
   margin-top: 0vh;
@@ -29,6 +31,16 @@
   padding: 0px 0px 0px 0px;
 }
 
+.textarea{
+  width:200px;
+  height:50px;
+  border:1px solid black;
+}
+
+.textarea-row{
+  height: 20vh;
+  
+}
 
 @keyframes App-logo-spin {
   from {
