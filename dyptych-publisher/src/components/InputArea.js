@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Bootstrap from 'bootstrap';
 
 class InputArea extends Component {
     constructor(props) {

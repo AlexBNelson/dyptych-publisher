@@ -2,6 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import './Button.css';
+import InputArea from './components/InputArea.js';
+import { Component } from 'react';
 
 class App extends Component {
   render() {
@@ -14,7 +16,7 @@ class App extends Component {
        </header>
         //https://reactjs.org/docs/forms.html -Text input in react reduz
         <div className="row textarea-row">
-          <textarea value={this.state.value} onChange={this.handleChange} />v>
+          <InputArea/>
         </div>
       </div>
     );
