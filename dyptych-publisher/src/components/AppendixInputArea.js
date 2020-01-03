@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import '../Input.css'
 
-class InputArea extends Component {
+class AppendixInputArea extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -25,20 +26,29 @@ class InputArea extends Component {
         alert('An essay was submitted: ' + this.state.value);
         event.preventDefault();
       }
+
+      onTextSelect() {
+        console.log("You selected some text");
+      }
     
       render() {
+
+
         return (
-          <form onSubmit={this.handleSubmit}>
-            <textarea value={this.state.title} onChange={this.handleTitleChange} />
+          <form className="col-12" onSubmit={this.handleSubmit}>
+
+            <div className="row">
+                <h3 className="input-label">Title</h3>
+                <textarea  onSelect={this.onTextSelect.bind(this)} className="title-text" value={this.state.title} onChange={this.handleTitleChange} />
+            </div>
             
-            <label>
-              Essay:
-              <textarea value={this.state.body} onChange={this.handleBodyChange} />
-            </label>
-            <input type="submit" value="Submit" />
+            <div className="row">
+                <h3 className="input-label">Body</h3>
+                <textarea onSelect={this.selectedText.bind(this)} className="body-text" value={this.state.body} onChange={this.handleBodyChange} />
+            </div>
           </form>
         );
       }
     }
 
-export default InputArea;
+export default AppendixInputArea;
