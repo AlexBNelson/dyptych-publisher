@@ -32,6 +32,13 @@
   padding: 0px 0px 0px 0px;
 }
 
+.page-number{
+  margin-left: 2vw;
+  margin-top: 3vh;
+  color: white;
+  font-size: 20px;
+}
+
 .textarea{
   width:200px;
   height:50px;

@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import '../Input.css'
+import { saveTextData } from '../actions'
+import { connect } from 'react-redux'
 
 class IntroInputArea extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          title: 'Exekias, from craftsman to fine artist',
-          body: 'Please write an essay about your favorite DOM element.'
+          title: 'Monet, The Great Impressionist',
+          body: 'Please write an essay about your favorite DOM element.',
+          author: 'Alex Nelson'
         };
     
         this.handleBodyChange = this.handleBodyChange.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleAuthorChange = this.handleAuthorChange.bind(this);
+        this.saveData = this.saveData.bind(this);
       }
     
       handleBodyChange(event) {
@@ -21,11 +25,15 @@ class IntroInputArea extends Component {
       handleTitleChange(event) {
         this.setState({title: event.target.value});
       }
-    
-      handleSubmit(event) {
-        alert('An essay was submitted: ' + this.state.value);
-        event.preventDefault();
+
+      handleAuthorChange(event) {
+        this.setState({author: event.target.value});
       }
+    
+      saveData() {
+        dispatch(saveTextData(this.props.imageSource + 1))
+      }
+
     
       render() {
 
@@ -37,7 +45,12 @@ class IntroInputArea extends Component {
                 <h3 className="input-label">Title</h3>
                 <textarea className="title-text" value={this.state.title} onChange={this.handleTitleChange} />
             </div>
-            
+
+            <div className="row">
+                <h3 className="input-label">Author</h3>
+                <textarea className="title-text" value={this.state.author} onChange={this.handleAuthorChange} />
+            </div>
+
             <div className="row">
                 <h3 className="input-label">Body</h3>
                 <textarea className="body-text" value={this.state.body} onChange={this.handleBodyChange} />
