@@ -27,10 +27,6 @@ class AppendixInputArea extends Component {
         event.preventDefault();
       }
 
-      onTextSelect() {
-        console.log("You selected some text");
-      }
-    
       render() {
 
 
@@ -39,12 +35,12 @@ class AppendixInputArea extends Component {
 
             <div className="row">
                 <h3 className="input-label">Title</h3>
-                <textarea  onSelect={this.onTextSelect.bind(this)} className="title-text" value={this.state.title} onChange={this.handleTitleChange} />
+                <textarea className="title-text" value={this.state.title} onChange={this.handleTitleChange} />
             </div>
             
             <div className="row">
                 <h3 className="input-label">Body</h3>
-                <textarea onSelect={this.selectedText.bind(this)} className="body-text" value={this.state.body} onChange={this.handleBodyChange} />
+                <textarea className="body-text" value={this.state.body} onChange={this.handleBodyChange} />
             </div>
           </form>
         );

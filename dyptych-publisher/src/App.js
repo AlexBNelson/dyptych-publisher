@@ -16,28 +16,48 @@ class App extends Component {
       pages: [<IntroInputArea/>],
       appendix: <AppendixInputArea/>
     };
+
+    this.previousPage = this.previousPage.bind(this);
+    this.nextPage = this.nextPage.bind(this);
+    this.addPage = this.addPage.bind(this);
+    this.deletePage = this.deletePage.bind(this);
   }
 
-  previousPage() {
+  previousPage(e) {
     this.setState({
-      pageNumber: state.pageNumber - 1
+      pageNumber: this.state.pageNumber - 1
     });
   }
 
-  nextPage() {
+  nextPage(e) {
     this.setState({
-      pageNumber: state.pageNumber + 1
+      pageNumber: this.state.pageNumber + 1
     });
   }
 
-  addPage(){
+  addPage(e){
+    console.log("check")
+
+    var array = this.state.pages
+
+    array.splice(this.state.pageNumber, 0, <BodyInputArea/>);
+    
     this.setState({
-      pages: state.pages.push(<BodyInputArea/>)
+      pages: array
     });
+
+    console.log(this.state.pages.length)
+    
   }
 
-  deletePage(){
+  deletePage(e){
+    var array = this.state.pages
 
+    array.splice(this.state.pageNumber, 1);
+
+    this.setState({
+      pages: array
+    });
   }
 
 
@@ -57,14 +77,10 @@ class App extends Component {
       <div className="App container">
         <header className="App-header row">
           <div className="col-4 App-title"><h2 className="">Dyptych | Publisher</h2></div>
-          <div className="col-sm button-container"><button type="button" className="btn btn-italics">Italics</button></div>
-          <div className="col-sm button-container"><button type="button" className="btn btn-iLink">Image Link</button></div>
-          <div className="col-sm button-container"><button type="button" className="btn btn-iLink" onclick="previousPage()">Previous</button></div>
-          <div className="col-sm button-container"><button type="button" className="btn btn-iLink" onclick="nextPage()">Next</button></div>
-          <div className="col-sm button-container"><button type="button" className="btn btn-iLink" onclick="newPage()">New Page</button></div>
-          <div className="col-sm button-container"><button type="button" className="btn btn-iLink" onclick="addAppendix()">Add Appendix</button></div>
-          <div className="col-sm button-container"><button type="button" className="btn btn-iLink" onclick="deletePage()">Delete Current Page</button></div>
-          <div className="col-sm button-container"><button type="button" className="btn btn-iLink">Publish</button></div>
+          <div className="flex-sm-row button-container"><button type="button" className="btn btn-iLink" onClick={this.previousPage}>Previous</button></div>
+          <div className="flex-sm-row button-container"><button type="button" className="btn btn-iLink" onClick={this.nextPage}>Next</button></div>
+          <div className="flex-sm-row button-container"><button type="button" className="btn btn-iLink" onClick={this.addPage}>New Page</button></div>          <div className="flex-sm-row button-container"><button type="button" className="btn btn-iLink" onclick="deletePage()">Delete Current Page</button></div>
+          <div className="flex-sm-row button-container"><button type="button" className="btn btn-iLink">Publish</button></div>
         </header>
 
         <div className="row textarea-row">
