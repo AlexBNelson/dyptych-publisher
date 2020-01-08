@@ -10,7 +10,7 @@ class AppendixInputArea extends Component {
         };
     
         this.handleSourcesChange = this.handleSourcesChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.saveData = this.saveData.bind(this);
       }
 
       handleSourcesChange(event) {

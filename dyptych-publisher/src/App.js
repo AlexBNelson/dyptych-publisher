@@ -13,13 +13,22 @@ class App extends Component {
     super(props)
     this.state = {
       pageNumber: 0,
-      pages: [<IntroInputArea pageNumber={this.state.pageNumber  + 1} pageTotal={this.state.pageTotal}/>, <AppendixInputArea pageNumber={this.state.pageNumber  + 1} pageTotal={this.state.pageTotal}/>]
+      pages: []
     };
-
     this.previousPage = this.previousPage.bind(this);
     this.nextPage = this.nextPage.bind(this);
     this.addPage = this.addPage.bind(this);
     this.deletePage = this.deletePage.bind(this);
+  }
+
+  componentDidMount(){
+    this.setState({
+      pages: this.state.pages.concat(<IntroInputArea pageNumber={this.state.pageNumber  + 1} pageTotal={this.state.pages.length}/>)
+    });
+
+    this.setState({
+      pages: this.state.pages.concat(<AppendixInputArea pageNumber={this.state.pageNumber  + 1} pageTotal={this.state.pages.length}/>)
+    });
   }
 
   previousPage(e) {
@@ -46,7 +55,7 @@ class App extends Component {
       var array = this.state.pages
 
 
-      array.splice(this.state.pageNumber + 1, 0, <BodyInputArea pageNumber={this.state.pageNumber + 1} pageTotal={this.state.pageTotal}/>);
+      array.splice(this.state.pageNumber + 1, 0, <BodyInputArea pageNumber={this.state.pageNumber + 1} pageTotal={this.state.pages.length}/>);
 
       this.setState({
         pages: array
