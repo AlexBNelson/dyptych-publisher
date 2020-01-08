@@ -21,6 +21,22 @@ class AppendixInputArea extends Component {
         event.preventDefault();
       }
 
+      saveData() {
+        axios({
+          method: 'post',
+          url: this.state.apiUrl + 'post/' + this.props.pageNumber +'/'+ this.props.pageTotal,
+          data: {
+            sources: this.state.sources
+          }
+        })
+          .then(
+          )
+          .catch(function (error) {
+            window.alert(error);
+    
+          });
+      }
+
       render() {
 
 
@@ -30,6 +46,7 @@ class AppendixInputArea extends Component {
             <div className="row">
                 <h3 className="input-label">Sources</h3>
                 <textarea className="title-text" value={this.state.sources} onChange={this.handleSourcesChange} />
+                <button type="button" className="btn btn-iLink" onClick={this.saveData}>save</button>
             </div>
             
           </form>

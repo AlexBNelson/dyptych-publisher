@@ -29,9 +29,23 @@ class IntroInputArea extends Component {
       handleAuthorChange(event) {
         this.setState({author: event.target.value});
       }
-    
+
       saveData() {
-        dispatch(saveTextData(this.props.imageSource + 1))
+        axios({
+          method: 'post',
+          url: this.state.apiUrl + 'post/' + this.props.pageNumber +'/'+ this.props.pageTotal,
+          data: {
+            title: this.state.title,
+            author: this.state.artist,
+            body: this.state.body
+          }
+        })
+          .then(
+          )
+          .catch(function (error) {
+            window.alert(error);
+    
+          });
       }
 
     
@@ -44,6 +58,7 @@ class IntroInputArea extends Component {
             <div className="row">
                 <h3 className="input-label">Title</h3>
                 <textarea className="title-text" value={this.state.title} onChange={this.handleTitleChange} />
+                <button type="button" className="btn btn-iLink" onClick={this.saveData}>save</button>
             </div>
 
             <div className="row">

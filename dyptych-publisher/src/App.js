@@ -13,7 +13,7 @@ class App extends Component {
     super(props)
     this.state = {
       pageNumber: 0,
-      pages: [<IntroInputArea />, <AppendixInputArea />]
+      pages: [<IntroInputArea pageNumber={this.state.pageNumber  + 1} pageTotal={this.state.pageTotal}/>, <AppendixInputArea pageNumber={this.state.pageNumber  + 1} pageTotal={this.state.pageTotal}/>]
     };
 
     this.previousPage = this.previousPage.bind(this);
@@ -46,7 +46,7 @@ class App extends Component {
       var array = this.state.pages
 
 
-      array.splice(this.state.pageNumber + 1, 0, <BodyInputArea />);
+      array.splice(this.state.pageNumber + 1, 0, <BodyInputArea pageNumber={this.state.pageNumber + 1} pageTotal={this.state.pageTotal}/>);
 
       this.setState({
         pages: array
