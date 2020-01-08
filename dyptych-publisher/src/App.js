@@ -6,6 +6,7 @@ import IntroInputArea from './components/IntroInputArea.js';
 import BodyInputArea from './components/BodyInputArea.js';
 import AppendixInputArea from './components/AppendixInputArea.js';
 import { Component } from 'react';
+import axios from 'axios';
 
 class App extends Component {
 
@@ -19,15 +20,12 @@ class App extends Component {
     this.nextPage = this.nextPage.bind(this);
     this.addPage = this.addPage.bind(this);
     this.deletePage = this.deletePage.bind(this);
+    this.resetArticle = this.resetArticle.bind(this);
   }
 
   componentDidMount(){
     this.setState({
-      pages: this.state.pages.concat(<IntroInputArea pageNumber={this.state.pageNumber  + 1} pageTotal={this.state.pages.length}/>)
-    });
-
-    this.setState({
-      pages: this.state.pages.concat(<AppendixInputArea pageNumber={this.state.pageNumber  + 1} pageTotal={this.state.pages.length}/>)
+    pages: this.state.pages.concat([<IntroInputArea pageNumber={this.state.pageNumber  + 1} pageTotal={this.state.pages.length}/>, <AppendixInputArea pageNumber={this.state.pageNumber  + 1} pageTotal={this.state.pages.length}/>])
     });
   }
 
@@ -61,6 +59,18 @@ class App extends Component {
         pages: array
       });
     }
+
+    axios({
+      method: 'post',
+      url: 'http://localhost:7071/api/add/' +(this.state.pageNumber + 1) + '/' + this.state.pages.length
+    })
+      .then(
+      )
+      .catch(function (error) {
+        window.alert(error);
+
+      });
+
   }
 
   deletePage(e) {
@@ -75,7 +85,20 @@ class App extends Component {
       });
     }
   }
+  
+  resetArticle(e) {
+    axios({
+      method: 'post',
+      url: 'http://localhost:7071/api/reset'
+    })
+      .then(
+      )
+      .catch(function (error) {
+        window.alert(error);
 
+      });
+   
+  }
 
 
   render() {
@@ -95,6 +118,7 @@ class App extends Component {
           <div className="flex-sm-row button-container"><button type="button" className="btn btn-iLink" onClick={this.addPage}>New Page</button></div>
           <div className="flex-sm-row button-container"><button type="button" className="btn btn-iLink" onClick={this.deletePage}>Delete Current Page</button></div>
           <div className="flex-sm-row button-container"><button type="button" className="btn btn-iLink">Publish</button></div>
+          <div className="flex-sm-row button-container"><button type="button" className="btn btn-iLink" onClick={this.resetArticle}>Reset</button></div>
           <div className="flex-sm-row page-number">{pageNumber}/{pageTotal}</div>
         </header>
 

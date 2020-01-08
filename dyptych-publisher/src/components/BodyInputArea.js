@@ -24,7 +24,7 @@ class BodyInputArea extends Component {
     this.handleMuseumChange = this.handleMuseumChange.bind(this);
 
 
-    this.saveData = this.handleSubmit.bind(this);
+    this.saveData = this.saveData.bind(this);
   }
 
   handleBodyChange(event) {
