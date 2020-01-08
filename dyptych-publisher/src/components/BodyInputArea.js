@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import '../Input.css'
+import '../Input.css';
+import axios from 'axios';
+
 
 class BodyInputArea extends Component {
   constructor(props) {

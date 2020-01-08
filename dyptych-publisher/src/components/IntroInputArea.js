@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import '../Input.css'
-import { saveTextData } from '../actions'
-import { connect } from 'react-redux'
+import '../Input.css';
+import { saveTextData } from '../actions';
+import { connect } from 'react-redux';
+import axios from 'axios';
+
 
 class IntroInputArea extends Component {
     constructor(props) {
