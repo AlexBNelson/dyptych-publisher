@@ -39,6 +39,22 @@ class AppendixInputArea extends Component {
           });
       }
 
+      getArticle() {
+        axios({
+          method: 'get',
+          url: this.state.apiUrl + 'get/' + this.props.pageNumber +'/'+ this.props.pageTotal,
+          data: {
+            sources: this.state.sources
+          }
+        })
+          .then(
+          )
+          .catch(function (error) {
+            window.alert(error);
+    
+          });
+      }
+
       render() {
 
 
