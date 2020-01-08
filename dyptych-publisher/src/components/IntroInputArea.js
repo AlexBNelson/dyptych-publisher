@@ -11,7 +11,8 @@ class IntroInputArea extends Component {
         this.state = {
           title: 'Monet, The Great Impressionist',
           body: 'Please write an essay about your favorite DOM element.',
-          author: 'Alex Nelson'
+          author: 'Alex Nelson',
+          apiUrl: 'http://localhost:7071/api/'
         };
     
         this.handleBodyChange = this.handleBodyChange.bind(this);

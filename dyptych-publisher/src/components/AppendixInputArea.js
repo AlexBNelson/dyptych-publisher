@@ -6,7 +6,8 @@ class AppendixInputArea extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          sources: 'https://www.claude-monet.com/impression-sunrise.jsp'
+          sources: 'https://www.claude-monet.com/impression-sunrise.jsp',
+          apiUrl: 'http://localhost:7071/api/'
         };
     
         this.handleSourcesChange = this.handleSourcesChange.bind(this);
