@@ -27,6 +27,29 @@ class BodyInputArea extends Component {
     this.saveData = this.saveData.bind(this);
   }
 
+  componentDidMount() {
+
+    axios({
+      method: 'get',
+      url: 'http://localhost:7071/api/get/' + this.props.pageNumber + '/' + this.props.pageTotal
+    }).then(function (response) {
+
+      this.setState({
+        title: response.data.title,
+        artist: response.data.artist,
+        museum: response.data.museum,
+        date: response.data.date,
+        medium: response.data.medium,
+        body: response.data.body
+      });
+
+    }).catch(function (error) {
+      window.alert(error);
+    });
+
+
+  }
+
   handleBodyChange(event) {
     this.setState({ body: event.target.value });
   }

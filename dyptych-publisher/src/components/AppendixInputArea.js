@@ -14,6 +14,24 @@ class AppendixInputArea extends Component {
         this.saveData = this.saveData.bind(this);
       }
 
+      componentDidMount() {
+
+        axios({
+          method: 'get',
+          url: 'http://localhost:7071/api/get/' + this.props.pageNumber + '/' + this.props.pageTotal
+        }).then(function (response) {
+    
+          this.setState({
+            title: response.data.sources
+          });
+    
+        }).catch(function (error) {
+          window.alert(error);
+        });
+    
+    
+      }
+
       handleSourcesChange(event) {
         this.setState({sources: event.target.value});
       }
