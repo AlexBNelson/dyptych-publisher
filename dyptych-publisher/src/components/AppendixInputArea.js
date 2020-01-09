@@ -12,22 +12,12 @@ class AppendixInputArea extends Component {
     
         this.handleSourcesChange = this.handleSourcesChange.bind(this);
         this.saveData = this.saveData.bind(this);
+        this.getData = this.getData.bind(this);
       }
 
       componentDidMount() {
 
-        axios({
-          method: 'get',
-          url: 'http://localhost:7071/api/get/' + this.props.pageNumber + '/' + this.props.pageTotal
-        }).then(function (response) {
-    
-          this.setState({
-            title: response.data.sources
-          });
-    
-        }).catch(function (error) {
-          window.alert(error);
-        });
+        
     
     
       }
@@ -57,23 +47,24 @@ class AppendixInputArea extends Component {
           });
       }
 
-      getArticle() {
+      getData() {
         axios({
           method: 'get',
-          url: this.state.apiUrl + 'get/' + this.props.pageNumber +'/'+ this.props.pageTotal,
-          data: {
-            sources: this.state.sources
-          }
-        })
-          .then(
-          )
-          .catch(function (error) {
-            window.alert(error);
+          url: this.state.apiUrl + this.props.pageNumber + '/' + this.props.pageTotal
+        }).then(function (response) {
     
+          this.setState({
+            sources: response.data.sources
           });
+    
+        }).catch(function (error) {
+          window.alert(error);
+        });
       }
 
       render() {
+
+        
 
 
         return (
@@ -83,6 +74,7 @@ class AppendixInputArea extends Component {
                 <h3 className="input-label">Sources</h3>
                 <textarea className="title-text" value={this.state.sources} onChange={this.handleSourcesChange} />
                 <button type="button" className="btn btn-iLink" onClick={this.saveData}>save</button>
+                <button type="button" className="btn btn-iLink" onClick={this.getData}>update</button>
             </div>
             
           </form>

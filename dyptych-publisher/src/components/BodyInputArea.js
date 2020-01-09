@@ -25,27 +25,12 @@ class BodyInputArea extends Component {
 
 
     this.saveData = this.saveData.bind(this);
+    this.getData = this.saveData.bind(this);
   }
 
   componentDidMount() {
 
-    axios({
-      method: 'get',
-      url: 'http://localhost:7071/api/get/' + this.props.pageNumber + '/' + this.props.pageTotal
-    }).then(function (response) {
-
-      this.setState({
-        title: response.data.title,
-        artist: response.data.artist,
-        museum: response.data.museum,
-        date: response.data.date,
-        medium: response.data.medium,
-        body: response.data.body
-      });
-
-    }).catch(function (error) {
-      window.alert(error);
-    });
+    
 
 
   }
@@ -95,7 +80,29 @@ class BodyInputArea extends Component {
       });
   }
 
+  getData(){
+    axios({
+      method: 'get',
+      url: 'http://localhost:7071/api/get/' + this.props.pageNumber + '/' + this.props.pageTotal
+    }).then(function (response) {
+
+      this.setState({
+        title: response.data.title,
+        artist: response.data.artist,
+        museum: response.data.museum,
+        date: response.data.date,
+        medium: response.data.medium,
+        body: response.data.body
+      });
+
+    }).catch(function (error) {
+      window.alert(error);
+    });
+  }
+
   render() {
+
+    
 
 
     return (
@@ -105,6 +112,7 @@ class BodyInputArea extends Component {
           <h3 className="input-label">Title</h3>
           <textarea className="title-text" value={this.state.title} onChange={this.handleTitleChange} />
           <button type="button" className="btn btn-iLink" onClick={this.saveData}>save</button>
+          <button type="button" className="btn btn-iLink" onClick={this.getData}>update</button>
         </div>
 
         <div className="row">

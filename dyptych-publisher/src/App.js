@@ -25,7 +25,7 @@ class App extends Component {
 
   componentDidMount(){
     this.setState({
-    pages: this.state.pages.concat([<IntroInputArea pageNumber={this.state.pageNumber  + 1} pageTotal={this.state.pages.length}/>, <AppendixInputArea pageNumber={this.state.pageNumber  + 1} pageTotal={this.state.pages.length}/>])
+    pages: this.state.pages.concat([<IntroInputArea pageNumber={this.state.pageNumber  + 2} pageTotal={this.state.pages.length}/>, <AppendixInputArea pageNumber={this.state.pageNumber  + 2} pageTotal={this.state.pages.length}/>])
     });
   }
 

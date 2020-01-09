@@ -19,24 +19,12 @@ class IntroInputArea extends Component {
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleAuthorChange = this.handleAuthorChange.bind(this);
     this.saveData = this.saveData.bind(this);
+    this.getData = this.getData.bind(this);
   }
 
   componentDidMount() {
 
-    axios({
-      method: 'get',
-      url: 'http://localhost:7071/api/get/' + this.props.pageNumber + '/' + this.props.pageTotal
-    }).then(function (response) {
-
-      this.setState({
-        title: response.data.title,
-        author: response.data.author,
-        body: response.data.body
-      });
-
-    }).catch(function (error) {
-      window.alert(error);
-    });
+    
 
 
   }
@@ -71,8 +59,27 @@ class IntroInputArea extends Component {
       });
   }
 
+  getData(){
+    axios({
+      method: 'get',
+      url: 'http://localhost:7071/api/get/' + this.props.pageNumber + '/' + this.props.pageTotal
+    }).then(function (response) {
+
+      this.setState({
+        title: response.data.title,
+        author: response.data.author,
+        body: response.data.body
+      });
+
+    }).catch(function (error) {
+      window.alert(error);
+    });
+  }
+
 
   render() {
+
+    
 
 
     return (
@@ -82,6 +89,7 @@ class IntroInputArea extends Component {
           <h3 className="input-label">Title</h3>
           <textarea className="title-text" value={this.state.title} onChange={this.handleTitleChange} />
           <button type="button" className="btn btn-iLink" onClick={this.saveData}>save</button>
+          <button type="button" className="btn btn-iLink" onClick={this.getData}>update</button>
         </div>
 
         <div className="row">
